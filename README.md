@@ -1,249 +1,170 @@
-# Todo Application
+Todos Application
 
-Given an `app.js` file and an empty database file `todoApplication.db`.
+A RESTful backend application built using Node.js and Express that allows users to manage a list of todos with support for filtering, updating, and deleting tasks stored in a SQLite database.
 
-Create a table with the name `todo` with the following columns,
+🚀 Features
 
-**Todo Table**
+Create, read, update, and delete todos
 
-| Column   | Type    |
-| -------- | ------- |
-| id       | INTEGER |
-| todo     | TEXT    |
-| priority | TEXT    |
-| status   | TEXT    |
+Filter todos by status, priority, and search text
 
-and write APIs to perform operations on the table `todo`,
+Dynamic query handling based on request parameters
 
-<MultiLineNote>
-  
-  - Replace the spaces in URL with `%20`.
-  - Possible values for `priority` are `HIGH`, `MEDIUM`, and `LOW`.
-  - Possible values for `status` are `TO DO`, `IN PROGRESS`, and `DONE`.
-</MultiLineNote>
+Persistent data storage using SQLite
 
-### API 1
+REST API architecture
 
-#### Path: `/todos/`
+🛠️ Tech Stack
 
-#### Method: `GET`
+Node.js
 
-- **Scenario 1**
+Express.js
 
-  - **Sample API**
-    ```
-    /todos/?status=TO%20DO
-    ```
-  - **Description**:
+SQLite
 
-    Returns a list of all todos whose status is 'TO DO'
+JavaScript (
 
-  - **Response**
+more
 
-    ```
-    [
-      {
-        id: 1,
-        todo: "Watch Movie",
-        priority: "LOW",
-        status: "TO DO"
-      },
-      ...
-    ]
-    ```
+Got you 👍 here’s the complete + detailed README.md for the Todos Application, continuing and expanding properly (same quality as your other READMEs).
 
-- **Scenario 2**
+Todos Application
 
-  - **Sample API**
-    ```
-    /todos/?priority=HIGH
-    ```
-  - **Description**:
+A RESTful backend application built using Node.js and Express that enables users to manage todos efficiently with full CRUD operations and advanced filtering capabilities. The application uses SQLite for persistent data storage.
 
-    Returns a list of all todos whose priority is 'HIGH'
+🚀 Features
 
-  - **Response**
+Add new todos
 
-    ```
-    [
-      {
-        id: 2,
-        todo: "Learn Node JS",
-        priority: "HIGH",
-        status: "IN PROGRESS"
-      },
-      ...
-    ]
-    ```
+View all todos
 
-- **Scenario 3**
+Filter todos by status, priority, and search keyword
 
-  - **Sample API**
-    ```
-    /todos/?priority=HIGH&status=IN%20PROGRESS
-    ```
-  - **Description**:
+Retrieve a specific todo by ID
 
-    Returns a list of all todos whose priority is 'HIGH' and status is 'IN PROGRESS'
+Update todo details (status, priority, or description)
 
-  - **Response**
+Delete a todo
 
-    ```
-    [
-      {
-        id: 2,
-        todo: "Learn Node JS",
-        priority: "HIGH",
-        status: "IN PROGRESS"
-      },
-      ...
-    ]
-    ```
+Dynamic query handling based on request parameters
 
-- **Scenario 4**
+🛠️ Tech Stack
 
-  - **Sample API**
-    ```
-    /todos/?search_q=Play
-    ```
-  - **Description**:
+Node.js
 
-    Returns a list of all todos whose todo contains 'Play' text
+Express.js
 
-  - **Response**
+SQLite
 
-    ```
-    [
-      {
-        id: 4,
-        todo: "Play volleyball",
-        priority: "MEDIUM",
-        status: "DONE"
-      },
-      ...
-    ]
-    ```
+JavaScript (ES6)
 
-### API 2
+📂 Project Structure
+.
+├── app.js
+├── todoApplication.db
+├── package.json
+└── package-lock.json
 
-#### Path: `/todos/:todoId/`
+📌 API Endpoints
+Get Todos
 
-#### Method: `GET`
+GET /todos/
 
-#### Description:
+Query Parameters:
 
-Returns a specific todo based on the todo ID
+search_q – search text
 
-#### Response
+status – todo status (TO DO / IN PROGRESS / DONE)
 
-```
+priority – todo priority (HIGH / MEDIUM / LOW)
+
+Supports combined and individual filters.
+
+Get Todo by ID
+
+GET /todos/:todoId/
+
+Returns details of a specific todo.
+
+Create Todo
+
+POST /todos/
+
+Request Body:
+
 {
-  id: 2,
-  todo: "Learn JavaScript",
-  priority: "HIGH",
-  status: "DONE"
+  "id": 1,
+  "todo": "Learn Node.js",
+  "priority": "HIGH",
+  "status": "IN PROGRESS"
 }
-```
 
-### API 3
 
-#### Path: `/todos/`
+Response:
 
-#### Method: `POST`
-
-#### Description:
-
-Create a todo in the todo table,
-
-#### Request
-
-```
-{
-  "id": 10,
-  "todo": "Finalize event theme",
-  "priority": "LOW",
-  "status": "TO DO"
-}
-```
-
-#### Response
-
-```
 Todo Successfully Added
-```
 
-### API 4
+Update Todo
 
-#### Path: `/todos/:todoId/`
+PUT /todos/:todoId/
 
-#### Method: `PUT`
+Allows updating one field at a time:
 
-#### Description:
+todo
 
-Updates the details of a specific todo based on the todo ID
+priority
 
-- **Scenario 1**
+status
 
-  - **Request**
-    ```
-    {
-      "status": "DONE"
-    }
-    ```
-  - **Response**
+Response Messages:
 
-    ```
-    Status Updated
-    ```
+Todo Updated
 
-- **Scenario 2**
+Priority Updated
 
-  - **Request**
-    ```
-    {
-      "priority": "HIGH"
-    }
-    ```
-  - **Response**
+Status Updated
 
-    ```
-    Priority Updated
-    ```
+Delete Todo
 
-- **Scenario 3**
+DELETE /todos/:todoId/
 
-  - **Request**
-    ```
-    {
-      "todo": "Some task"
-    }
-    ```
-  - **Response**
+Deletes the specified todo.
 
-    ```
-    Todo Updated
-    ```
+⚙️ Key Concepts Used
 
-### API 5
+RESTful API design
 
-#### Path: `/todos/:todoId/`
+Express routing
 
-#### Method: `DELETE`
+Query parameters handling
 
-#### Description:
+Dynamic SQL queries
 
-Deletes a todo from the todo table based on the todo ID
+CRUD operations
 
-#### Response
+Async/Await
 
-```
-Todo Deleted
-```
+SQLite database operations
 
-<br/>
+▶️ How to Run Locally
+git clone <repository-url>
+cd todos-application
+npm install
+node app.js
 
-Use `npm install` to install the packages.
 
-**Export the express instance using the default export syntax.**
+Server will start at:
 
-**Use Common JS module syntax.**
+http://localhost:3000/
+
+📌 Future Enhancements
+
+Input validation for todo fields
+
+Pagination for large todo lists
+
+Authentication and authorization
+
+Use prepared statements to prevent SQL injection
+
+Deployment to cloud platforms
