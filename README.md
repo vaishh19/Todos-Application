@@ -153,10 +153,6 @@ npm install
 node app.js
 
 
-Server will start at:
-
-http://localhost:3000/
-
 📌 Future Enhancements
 
 Input validation for todo fields
